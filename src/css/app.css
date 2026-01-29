@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom theme styles here */
+.bg-color-primary {
+    background-color: white;
+}
+.bg-color-secondary {
+    background-color:#f2e5e5;
+}
+.bg-color-tertiary {
+    background-color: rgb(251, 212, 219);
+}

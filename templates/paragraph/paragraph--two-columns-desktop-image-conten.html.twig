@@ -1,0 +1,82 @@
+{# paragraph--two-columns-desktop-image-content.html.twig #}
+
+{% set layout = paragraph.field_layout.value %}
+{% set image_position = paragraph.field_positioning.value %}
+{% set background_color = paragraph.field_background_color.value %}
+
+{# Column width mapping #}
+{% if layout == '1_2_1_2' %}
+  {% set image_cols = 'md:col-span-6' %}
+  {% set text_cols  = 'md:col-span-6' %}
+{% elseif layout == '1_3_2_3' %}
+  {% set image_cols = 'md:col-span-4' %}
+  {% set text_cols  = 'md:col-span-8' %}
+{% elseif layout == '1_4_3_4' %}
+  {% set image_cols = 'md:col-span-3' %}
+  {% set text_cols  = 'md:col-span-9' %}
+{% else %}
+  {% set image_cols = 'md:col-span-6' %}
+  {% set text_cols  = 'md:col-span-6' %}
+{% endif %}
+
+{# Order logic:
+   Mobile: image always first (order-1)
+   Desktop: depends on image_position field
+#}
+
+{% if image_position == 'image_left' %}
+  {% set image_order = 'order-1 md:order-1' %}
+  {% set text_order  = 'order-2 md:order-2' %}
+{% else %}
+  {# image_position == 'right' #}
+  {% set image_order = 'order-1 md:order-2' %}
+  {% set text_order  = 'order-2 md:order-1' %}
+{% endif %}
+
+<section class="w-full py-12 bg-gray-300 py-18 bg-color-{{ background_color }}">
+
+  <div class="grid max-w-6xl m-auto md:grid-cols-12 gap-8 items-center">
+
+    {# IMAGE COLUMN #}
+    <div class="{{ image_cols }} {{ image_order }} p-8">
+      {% if content.field_image %}
+        {{ content.field_image|add_class('w-full rounded-xl object-contain overflow-hidden') }}
+      {% endif %}
+    </div>
+
+    {# TEXT COLUMN #}
+    <div class="{{ text_cols }} {{ text_order }}">
+
+      {% if content.field_headline %}
+        <h2 class="font-bebas-neue uppercase text-4xl font-black text-gray-800 mb-3">
+          {{ content.field_headline }}
+        </h2>
+      {% endif %}
+      
+      {% if content.field_subhead %}
+        <h2 class="font-bebas-neue text-xl font-black text-gray-800 mb-3">
+          {{ content.field_subhead }}
+        </h2>
+      {% endif %}
+
+      {% if content.field_block_content %}
+        <div class="text-gray-700 text-base leading-relaxed">
+          {{ content.field_block_content }}
+        </div>
+      {% endif %}
+      {% if content.field_cta_primary or content.field_cta_secondary %}
+        <div class="flex mt-8">
+            {% if content.field_cta_primary %}
+            {{ content.field_cta_primary|add_class('uppercase py-2 px-4 rounded-lg bg-pink-500 border-2 border-transparent text-white text-md mr-4 hover:bg-pink-400 transition') }}
+            {% endif %}
+
+            {% if content.field_cta_secondary %}
+            {{ content.field_cta_secondary|add_class('uppercase py-2 px-4 rounded-lg bg-transparent border-2 border-pink-500 text-pink-500 hover:bg-pink-500 hover:text-white text-md transition') }}
+            {% endif %}
+        </div>
+      {% endif %}
+    </div>
+
+  </div>
+
+</section>
