@@ -505,11 +505,12 @@ video {
   --tw-text-opacity: 1;
   color: rgb(15 23 42 / var(--tw-text-opacity, 1));
 }
-
-  a {
-  --tw-text-opacity: 1;
-  color: rgb(244 114 182 / var(--tw-text-opacity, 1));
+  h1, h2 {
+  font-family: Orbitron, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
 }
+  
   .vault-button-primary a {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
@@ -606,6 +607,48 @@ button,
   padding-bottom: 0.75rem;
 }
 
+/* =========================
+      CRT / Scanline Effect
+    ========================= */
+
+.crt-scanlines::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          to bottom,
+          rgba(255,255,255,0.04),
+          rgba(255,255,255,0.04) 1px,
+          rgba(0,0,0,0) 2px,
+          rgba(0,0,0,0) 4px
+        );
+      pointer-events: none;
+      opacity: 0.35;
+    }
+
+.crt-scanlines::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        ellipse at center,
+        rgba(255,255,255,0.06) 0%,
+        rgba(0,0,0,0.2) 70%
+      );
+      pointer-events: none;
+      mix-blend-mode: overlay;
+    }
+
+/* Respect reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+      .crt-scanlines::before,
+      .crt-scanlines::after {
+        display: none;
+      }
+    }
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -680,6 +723,10 @@ button,
   margin-right: auto;
 }
 
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
+
 .mb-2 {
   margin-bottom: 0.5rem;
 }
@@ -690,6 +737,14 @@ button,
 
 .mb-6 {
   margin-bottom: 1.5rem;
+}
+
+.mt-10 {
+  margin-top: 2.5rem;
+}
+
+.mt-12 {
+  margin-top: 3rem;
 }
 
 .mt-3 {
@@ -712,8 +767,16 @@ button,
   display: block;
 }
 
+.inline-block {
+  display: inline-block;
+}
+
 .flex {
   display: flex;
+}
+
+.inline-flex {
+  display: inline-flex;
 }
 
 .grid {
@@ -760,6 +823,10 @@ button,
   min-height: 320px;
 }
 
+.min-h-\[44px\] {
+  min-height: 44px;
+}
+
 .min-h-full {
   min-height: 100%;
 }
@@ -796,12 +863,28 @@ button,
   width: 100%;
 }
 
+.max-w-3xl {
+  max-width: 48rem;
+}
+
+.max-w-5xl {
+  max-width: 64rem;
+}
+
 .max-w-6xl {
   max-width: 72rem;
 }
 
+.max-w-7xl {
+  max-width: 80rem;
+}
+
 .max-w-full {
   max-width: 100%;
+}
+
+.max-w-md {
+  max-width: 28rem;
 }
 
 .max-w-sm {
@@ -875,6 +958,10 @@ button,
   gap: 3rem;
 }
 
+.gap-3 {
+  gap: 0.75rem;
+}
+
 .gap-4 {
   gap: 1rem;
 }
@@ -885,6 +972,27 @@ button,
 
 .gap-8 {
   gap: 2rem;
+}
+
+.gap-x-5 {
+  -moz-column-gap: 1.25rem;
+       column-gap: 1.25rem;
+}
+
+.gap-y-2 {
+  row-gap: 0.5rem;
+}
+
+.space-y-3 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
+}
+
+.space-y-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
 }
 
 .overflow-hidden {
@@ -942,6 +1050,20 @@ button,
   border-color: rgb(255 255 255 / 0.2);
 }
 
+.border-white\/25 {
+  border-color: rgb(255 255 255 / 0.25);
+}
+
+.border-yellow-400 {
+  --tw-border-opacity: 1;
+  border-color: rgb(250 204 21 / var(--tw-border-opacity, 1));
+}
+
+.bg-\[\#0b2a3c\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(11 42 60 / var(--tw-bg-opacity, 1));
+}
+
 .bg-black {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1));
@@ -961,6 +1083,11 @@ button,
   background-color: rgb(236 72 153 / var(--tw-bg-opacity, 1));
 }
 
+.bg-pink-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(219 39 119 / var(--tw-bg-opacity, 1));
+}
+
 .bg-slate-900 {
   --tw-bg-opacity: 1;
   background-color: rgb(15 23 42 / var(--tw-bg-opacity, 1));
@@ -973,6 +1100,11 @@ button,
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+
+.bg-yellow-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(250 204 21 / var(--tw-bg-opacity, 1));
 }
 
 .object-contain {
@@ -989,9 +1121,29 @@ button,
   padding-right: 0.75rem;
 }
 
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
 .px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+}
+
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.py-10 {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
 }
 
 .py-12 {
@@ -999,9 +1151,19 @@ button,
   padding-bottom: 3rem;
 }
 
+.py-16 {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
 .py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+}
+
+.py-28 {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
 }
 
 .py-3 {
@@ -1019,8 +1181,16 @@ button,
   padding-bottom: 1.5rem;
 }
 
+.pt-6 {
+  padding-top: 1.5rem;
+}
+
 .text-center {
   text-align: center;
+}
+
+.font-orbitron {
+  font-family: Orbitron, sans-serif;
 }
 
 .text-2xl {
@@ -1082,6 +1252,14 @@ button,
   line-height: 1.625;
 }
 
+.tracking-tight {
+  letter-spacing: -0.025em;
+}
+
+.tracking-wide {
+  letter-spacing: 0.025em;
+}
+
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity, 1));
@@ -1102,6 +1280,11 @@ button,
   color: rgb(236 72 153 / var(--tw-text-opacity, 1));
 }
 
+.text-pink-700 {
+  --tw-text-opacity: 1;
+  color: rgb(190 24 93 / var(--tw-text-opacity, 1));
+}
+
 .text-slate-400 {
   --tw-text-opacity: 1;
   color: rgb(148 163 184 / var(--tw-text-opacity, 1));
@@ -1115,6 +1298,23 @@ button,
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+
+.text-white\/80 {
+  color: rgb(255 255 255 / 0.8);
+}
+
+.text-white\/90 {
+  color: rgb(255 255 255 / 0.9);
+}
+
+.text-yellow-400 {
+  --tw-text-opacity: 1;
+  color: rgb(250 204 21 / var(--tw-text-opacity, 1));
+}
+
+.underline-offset-4 {
+  text-underline-offset: 4px;
 }
 
 .shadow-lg {
@@ -1174,6 +1374,139 @@ button,
     background-color: rgb(251, 212, 219);
 }
 
+/* Fallout Vault Section */
+
+.pricing-section--vault {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at top center,
+      rgba(57, 255, 20, 0.12),
+      rgba(0, 0, 0, 0) 60%
+    ),
+    linear-gradient(
+      180deg,
+      #0b0f0c,
+      #060908
+    );
+  border-top: 1px solid rgba(57, 255, 20, 0.25);
+  border-bottom: 1px solid rgba(57, 255, 20, 0.25);
+}
+
+.pricing-section--vault h2 {
+  color:white;
+}
+
+/* Optional subtle scanline texture */
+
+.pricing-section--vault::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.015),
+      rgba(255,255,255,0.015) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+  pointer-events: none;
+  opacity: 0.15;
+}
+
+:root {
+  --vault-green: #39ff14;
+  --vault-dark: #0b0f0c;
+  --vault-border: #2aff00;
+}
+
+.pricing-card {
+  background: linear-gradient(180deg, #0f1512, #070a08);
+  border: 2px solid var(--vault-border);
+  padding: 1.75rem;
+  position: relative;
+  font-family: monospace;
+  color: var(--vault-green);
+  box-shadow: 0 0 20px rgba(57,255,20,.15);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.pricing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 30px rgba(57,255,20,.3);
+}
+
+.pricing-card__badge {
+  position: absolute;
+  top: -12px;
+  right: 1rem;
+  background: var(--vault-green);
+  color: #000;
+  padding: .25rem .75rem;
+  font-size: .75rem;
+  font-weight: bold;
+}
+
+.pricing-card__title {
+  font-size: 1.25rem;
+  margin-bottom: .5rem;
+  text-transform: uppercase;
+}
+
+.pricing-card__price {
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+
+.pricing-card__features ul {
+  list-style: none;
+  padding: 0;
+}
+
+.pricing-card__features li::before {
+  content: "▸";
+  margin-right: .5rem;
+}
+
+.pricing-card__button {
+  display: block;
+  text-align: center;
+  margin-top: 1.25rem;
+  padding: .75rem;
+  border: 2px solid var(--vault-green);
+  color: var(--vault-green);
+  text-decoration: none;
+}
+
+.pricing-card--featured {
+  transform: scale(1.05);
+  border-color: #ffd700;
+}
+
+.pricing-section__grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr; /* mobile: stack */
+}
+
+/* Tablet */
+
+@media (min-width: 640px) {
+  .pricing-section__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Desktop */
+
+@media (min-width: 1024px) {
+  .pricing-section__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
 .hover\:bg-pink-400:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(244 114 182 / var(--tw-bg-opacity, 1));
@@ -1189,6 +1522,20 @@ button,
   background-color: rgb(219 39 119 / var(--tw-bg-opacity, 1));
 }
 
+.hover\:bg-white\/95:hover {
+  background-color: rgb(255 255 255 / 0.95);
+}
+
+.hover\:bg-yellow-300:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(253 224 71 / var(--tw-bg-opacity, 1));
+}
+
+.hover\:bg-yellow-400:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(250 204 21 / var(--tw-bg-opacity, 1));
+}
+
 .hover\:text-pink-500:hover {
   --tw-text-opacity: 1;
   color: rgb(236 72 153 / var(--tw-text-opacity, 1));
@@ -1199,9 +1546,18 @@ button,
   color: rgb(219 39 119 / var(--tw-text-opacity, 1));
 }
 
+.hover\:text-slate-900:hover {
+  --tw-text-opacity: 1;
+  color: rgb(15 23 42 / var(--tw-text-opacity, 1));
+}
+
 .hover\:text-white:hover {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+
+.hover\:underline:hover {
+  text-decoration-line: underline;
 }
 
 .focus\:not-sr-only:focus {
@@ -1243,6 +1599,24 @@ button,
   --tw-ring-color: rgb(244 114 182 / var(--tw-ring-opacity, 1));
 }
 
+.focus-visible\:ring-2:focus-visible {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
+.focus-visible\:ring-white\/90:focus-visible {
+  --tw-ring-color: rgb(255 255 255 / 0.9);
+}
+
+.focus-visible\:ring-offset-2:focus-visible {
+  --tw-ring-offset-width: 2px;
+}
+
+.focus-visible\:ring-offset-pink-600:focus-visible {
+  --tw-ring-offset-color: #db2777;
+}
+
 .dark\:bg-gray-800:is(.dark *) {
   --tw-bg-opacity: 1;
   background-color: rgb(31 41 55 / var(--tw-bg-opacity, 1));
@@ -1253,6 +1627,14 @@ button,
   .sm\:mx-0 {
     margin-left: 0px;
     margin-right: 0px;
+  }
+
+  .sm\:mt-16 {
+    margin-top: 4rem;
+  }
+
+  .sm\:mt-6 {
+    margin-top: 1.5rem;
   }
 
   .sm\:flex {
@@ -1271,6 +1653,10 @@ button,
     width: 66.666667%;
   }
 
+  .sm\:w-auto {
+    width: auto;
+  }
+
   .sm\:max-w-md {
     max-width: 28rem;
   }
@@ -1283,13 +1669,54 @@ button,
     flex-direction: row;
   }
 
+  .sm\:items-center {
+    align-items: center;
+  }
+
+  .sm\:justify-end {
+    justify-content: flex-end;
+  }
+
+  .sm\:justify-between {
+    justify-content: space-between;
+  }
+
+  .sm\:gap-12 {
+    gap: 3rem;
+  }
+
+  .sm\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .sm\:py-12 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
   .sm\:py-16 {
     padding-top: 4rem;
     padding-bottom: 4rem;
   }
 
+  .sm\:py-20 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
   .sm\:text-left {
     text-align: left;
+  }
+
+  .sm\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .sm\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
   }
 
   .sm\:text-4xl {
@@ -1302,9 +1729,9 @@ button,
     line-height: 1;
   }
 
-  .sm\:text-6xl {
-    font-size: 3.75rem;
-    line-height: 1;
+  .sm\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
   }
 
   .sm\:text-xl {
@@ -1333,6 +1760,10 @@ button,
 
   .md\:col-span-4 {
     grid-column: span 4 / span 4;
+  }
+
+  .md\:col-span-5 {
+    grid-column: span 5 / span 5;
   }
 
   .md\:col-span-6 {
@@ -1427,18 +1858,13 @@ button,
     line-height: 2rem;
   }
 
-  .lg\:text-5xl {
-    font-size: 3rem;
-    line-height: 1;
+  .lg\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
   }
 
   .lg\:text-6xl {
     font-size: 3.75rem;
-    line-height: 1;
-  }
-
-  .lg\:text-8xl {
-    font-size: 6rem;
     line-height: 1;
   }
 }

@@ -13,13 +13,101 @@
           {{ page.content }}
       </main>
   </div>
-
   {% if page.footer %}
-    <footer class="border-t border-slate-800 bg-slate-900">
-      <div class="px-6 py-6 text-sm text-slate-400">
-        {{ page.footer }}
-      </div>
-    </footer>
-  {% endif %}
+<footer role="contentinfo" class="bg-pink-600 text-white">
+  <div class="max-w-6xl mx-auto px-5 sm:px-6 py-10 sm:py-12">
 
+    {# Main footer grid #}
+    <div class="grid gap-10 sm:gap-12 md:grid-cols-12">
+
+      {# Brand / mission #}
+      <div class="md:col-span-5 text-center md:text-left">
+        <a href="{{ path('<front>') }}"
+           class="inline-flex items-center justify-center md:justify-start gap-3 rounded
+                  focus:outline-none focus-visible:ring-2 focus-visible:ring-white/90
+                  focus-visible:ring-offset-2 focus-visible:ring-offset-pink-600">
+          <span class="text-xl sm:text-2xl font-bold tracking-wide">
+            {{ site_name }}
+          </span>
+        </a>
+
+        <p class="mt-4 text-white/90 leading-relaxed max-w-md mx-auto md:mx-0">
+          Operational resilience through modern cybersecurity—detect, defend, and recover with confidence.
+        </p>
+      </div>
+
+      {# Links #}
+      <nav class="md:col-span-4 text-center md:text-left" aria-label="Footer navigation">
+        <h2 class="text-base font-semibold">Explore</h2>
+
+        <ul class="mt-4 space-y-3">
+          {% for item in [
+            {'url':'/services','label':'Services'},
+            {'url':'/industries','label':'Industries'},
+            {'url':'/technologies','label':'Technologies'},
+            {'url':'/about-us','label':'About'}
+          ] %}
+            <li>
+              <a href="{{ item.url }}"
+                 class="inline-block py-1 underline-offset-4 hover:underline
+                        focus:outline-none focus-visible:ring-2 focus-visible:ring-white/90
+                        focus-visible:ring-offset-2 focus-visible:ring-offset-pink-600 rounded">
+                {{ item.label }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+
+      {# Contact / CTA #}
+      <div class="md:col-span-3 text-center md:text-left">
+        <h2 class="text-base font-semibold">Get in touch</h2>
+
+        <div class="mt-4 space-y-4 text-white/90">
+          <p>
+            <a href="mailto:security@vaultcyber.example"
+               class="inline-block underline-offset-4 hover:underline
+                      focus:outline-none focus-visible:ring-2 focus-visible:ring-white/90
+                      focus-visible:ring-offset-2 focus-visible:ring-offset-pink-600 rounded">
+              security@vaultcyber.example
+            </a>
+          </p>
+
+          <a href="/contact"
+             class="inline-flex w-full sm:w-auto items-center justify-center rounded-lg
+                    bg-white text-pink-700 font-semibold
+                    px-6 py-3 min-h-[44px]
+                    hover:bg-white/95 transition
+                    focus:outline-none focus-visible:ring-2 focus-visible:ring-white/90
+                    focus-visible:ring-offset-2 focus-visible:ring-offset-pink-600">
+            Contact Us
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    {# Bottom bar #}
+    <div class="mt-10 border-t border-white/25 pt-6
+                flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between
+                text-center sm:text-left">
+
+      <p class="text-sm text-white/90">
+        © {{ "now"|date("Y") }} {{ site_name }}. All rights reserved.
+      </p>
+
+      <div class="flex flex-wrap justify-center sm:justify-end gap-x-5 gap-y-2 text-sm">
+        <a href="/privacy" class="underline-offset-4 hover:underline rounded focus-visible:ring-2 focus-visible:ring-white/90 focus-visible:ring-offset-2 focus-visible:ring-offset-pink-600">Privacy</a>
+        <a href="/terms" class="underline-offset-4 hover:underline rounded focus-visible:ring-2 focus-visible:ring-white/90 focus-visible:ring-offset-2 focus-visible:ring-offset-pink-600">Terms</a>
+        <a href="/accessibility" class="underline-offset-4 hover:underline rounded focus-visible:ring-2 focus-visible:ring-white/90 focus-visible:ring-offset-2 focus-visible:ring-offset-pink-600">Accessibility</a>
+      </div>
+
+    </div>
+
+    {# Optional Drupal footer blocks #}
+    {# <div class="mt-8">{{ page.footer }}</div> #}
+
+  </div>
+</footer>
+{% endif %}
 </div>

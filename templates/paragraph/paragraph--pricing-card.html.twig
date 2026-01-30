@@ -1,0 +1,29 @@
+{%
+  set variant = paragraph.field_variant.value ?: 'basic'
+%}
+
+<div class="pricing-card pricing-card--{{ variant }}">
+  {% if paragraph.field_badge.value %}
+    <div class="pricing-card__badge">
+      {{ paragraph.field_badge.value }}
+    </div>
+  {% endif %}
+
+  <h3 class="pricing-card__title">
+    {{ paragraph.field_title.value }}
+  </h3>
+
+  <div class="pricing-card__price">
+    {{ paragraph.field_price.value }}
+  </div>
+
+  <div class="pricing-card__features">
+    {{ paragraph.field_features.value|raw }}
+  </div>
+
+  <div class="pricing-card__cta">
+    <a href="/contact" class="pricing-card__button">
+      Enlist Now
+    </a>
+  </div>
+</div>

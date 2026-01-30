@@ -1,0 +1,33 @@
+{%
+  set bg = paragraph.field_background.value ?: 'vault'
+%}
+
+<section class="pricing-section pricing-section--{{ bg }}">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 py-16 sm:py-20">
+
+    {% if paragraph.field_headline.value %}
+      <h2 class="pricing-section__title
+                 text-3xl sm:text-4xl font-bold tracking-tight
+                 text-center">
+        {{ paragraph.field_headline.value }}
+      </h2>
+    {% endif %}
+
+    {% if paragraph.field_subhead.value %}
+      <p class="pricing-section__intro
+                mt-4 sm:mt-6
+                max-w-3xl mx-auto
+                text-base sm:text-lg
+                text-white/80
+                text-center leading-relaxed">
+        {{ paragraph.field_subhead.value }}
+      </p>
+    {% endif %}
+
+    <div class="pricing-section__grid mt-12 sm:mt-16">
+    {% for item in paragraph.field_pricing_cards %}
+        {{ drupal_entity('paragraph', item.target_id) }}
+    {% endfor %}
+    </div>
+  </div>
+</section>
