@@ -34,3 +34,39 @@ function vault_cyber_preprocess_menu(&$variables) {
     $variables['site_logo'] = NULL;
   }
 }
+
+/**
+ * Alter the user login form.
+ */
+function vault_cyber_form_user_login_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
+  // Form wrapper classes.
+  $form['#attributes']['class'][] = 
+  'bg-slate-900 mx-auto p-8 rounded-xl vault-login-box shadow-lg';
+
+  // Username field.
+  $form['name']['#attributes']['class'][] =
+    'w-full focus:ring-2 focus:ring-pink-500 focus:outline-none';
+
+  // Password field.
+  $form['pass']['#attributes']['class'][] =
+    'w-full focus:ring-2 focus:ring-pink-500 focus:outline-none'; 
+
+  // Submit button.
+  $form['actions']['submit']['#attributes']['class'][] =
+    'w-full text-xl rounded-lg bg-pink-500 text-white font-semibold hover:bg-pink-600 transition';
+}
+
+
+function vault_cyber_form_user_pass_alter(array &$form, FormStateInterface $form_state, $form_id) {
+
+  // Form wrapper
+  $form['#attributes']['class'][] = 'bg-slate-900 mx-auto p-8 rounded-xl vault-login-box shadow-lg';
+
+  // Username / email field
+  $form['name']['#attributes']['class'][] =
+    'w-full focus:ring-2 focus:ring-pink-500 focus:outline-none';
+
+  // Submit button
+  $form['actions']['submit']['#attributes']['class'][] =
+    'w-full text-xl rounded-lg bg-pink-500 text-white font-semibold hover:bg-pink-600 transition';
+}

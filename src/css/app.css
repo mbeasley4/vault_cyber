@@ -3,6 +3,29 @@
 @tailwind utilities;
 
 /* Custom theme styles here */
+@layer base {
+  html, body {
+    @apply bg-white text-slate-900;
+  }
+
+  a {
+    @apply text-slate-900;
+  }
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
+        @apply my-3 px-4 py-3;
+    }
+}
+.vault-login-box {
+    max-width:600px;
+    margin:30px auto 15px;
+}
+.vault-login-box label {
+    color:white;
+}
 .bg-color-primary {
     background-color: white;
 }
