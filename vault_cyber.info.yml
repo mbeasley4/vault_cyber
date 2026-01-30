@@ -1,6 +1,6 @@
 name: Vault Cyber
 type: theme
-description: "Drupal 11 theme powered by Tailwind CSS"
+description: "A modern Drupal 11 theme for cybersecurity-focused sites, built with Tailwind CSS for speed, accessibility, and responsive design."
 core_version_requirement: ^11
 base theme: false
 
