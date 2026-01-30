@@ -4,6 +4,9 @@ description: "A modern Drupal 11 theme for cybersecurity-focused sites, built wi
 core_version_requirement: ^11
 base theme: false
 
+logo: logo.svg
+favicon: favicon.ico
+
 libraries:
   - vault_cyber/global
   - vault_cyber/mobile-menu
