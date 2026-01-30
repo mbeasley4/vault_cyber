@@ -1356,6 +1356,7 @@ button,
 .vault-login-box {
     max-width:600px;
     margin:30px auto 15px;
+    padding: 3rem;
 }
 
 .vault-login-box label {
