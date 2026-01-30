@@ -1,0 +1,31 @@
+
+@layer components {
+  .hamburger-line {
+    @apply w-6 h-0.5 bg-slate-900 transition-all duration-300 absolute;
+  }
+
+  #mobile-menu-toggle span:nth-child(1) {
+    transform: translateY(-8px);
+  }
+
+  #mobile-menu-toggle span:nth-child(3) {
+    transform: translateY(8px);
+  }
+
+  #mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg);
+  }
+
+  #mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  #mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg);
+  }
+  /* Close icon */
+  .close-line {
+    @apply absolute w-5 h-0.5 bg-white rounded
+           transition-transform duration-200;
+  }
+}

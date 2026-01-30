@@ -1,24 +1,42 @@
+@import "./mobile-menu.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Custom theme styles here */
+
+/* =====================
+   BASE
+===================== */
 @layer base {
   html, body {
     @apply bg-white text-slate-900;
   }
 
   a {
-    @apply text-slate-900;
+    @apply text-pink-400;
   }
-    button,
-    input,
-    optgroup,
-    select,
-    textarea {
-        @apply my-3 px-4 py-3;
-    }
+  .vault-button-primary a {
+    @apply text-white;
+  }
+  .vault-button-secondary a {
+    @apply text-pink-400;
+  }
 }
+/* =====================
+   COMPONENTS
+===================== */
+@layer components {
+  /* Help with drupal buttons */
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    @apply my-3 px-4 py-3;
+  }
+}
+
 .vault-login-box {
     max-width:600px;
     margin:30px auto 15px;

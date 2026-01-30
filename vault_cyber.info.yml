@@ -6,6 +6,7 @@ base theme: false
 
 libraries:
   - vault_cyber/global
+  - vault_cyber/mobile-menu
 
 regions:
   header: Header

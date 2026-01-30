@@ -1,35 +1,90 @@
+{{ attach_library('vault_cyber/mobile-menu') }}
 {# templates/menu/menu--main.html.twig #}
 
-<nav>
-  <div class="w-full py-2 border-b border-slate-800">
+<nav class="relative">
+  <div class="w-full py-2 border-b border-slate-200 bg-white">
+    <div class="flex justify-between items-center px-6 lg:px-20 font-semibold">
 
-    <div class="flex justify-between px-20 items-center font-semibold">
+      {# LOGO #}
+      <a href="{{ path('<front>') }}">
+        <img src="{{ site_logo }}" alt="{{ site_name }}" class="h-14 w-auto">
+      </a>
 
-      {# LOGO from Drupal theme settings #}
-      <div>
-        <a href="{{ path('<front>') }}">
-          <img src="{{ site_logo }}" alt="{{ site_name }}" class="h-20 w-auto">
-        </a>
-      </div>
-
-      {# MENU LINKS #}
-      <div class="flex xl:gap-10 md:gap-8 gap-2">
-
+      {# DESKTOP MENU #}
+      <div class="hidden lg:flex gap-8 items-center">
         {% for item in items %}
-          <a 
-            href="{{ item.url }}" 
-            class="
-              hover:text-pink-500 transition
-              {% if item.in_active_trail %} text-pink-500 {% endif %}
-            "
-          >
+          <a href="{{ item.url }}"
+             class="text-slate-900 hover:text-pink-500 transition
+             {% if item.in_active_trail %} text-pink-500 {% endif %}">
             {{ item.title }}
           </a>
         {% endfor %}
-
       </div>
 
-    
+      {# MOBILE HAMBURGER #}
+      <button
+        id="mobile-menu-toggle"
+        class="lg:hidden relative w-8 h-8 flex items-center justify-center"
+        aria-label="Open menu"
+        aria-expanded="false">
+
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+
     </div>
   </div>
+
+  {# OVERLAY #}
+  <div id="mobile-menu-overlay"
+       class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden"></div>
+
+  {# SLIDE-OUT MENU #}
+  <aside
+    id="mobile-menu"
+    class="fixed inset-y-0 right-0 z-50 w-[80vw] max-w-full bg-white shadow-xl
+           transform translate-x-full transition-transform duration-300 lg:hidden">
+
+    <div class="flex flex-col h-full">
+
+    <div class="flex items-center justify-between p-6 border-b">
+      <span class="text-xl font-bold">
+        {{ site_name }}
+      </span>
+
+      <button
+        id="mobile-menu-close"
+        class="relative w-10 h-10 flex items-center justify-center rounded-full
+         bg-pink-500 hover:bg-pink-600 transition
+         focus:outline-none focus:ring-2 focus:ring-pink-400"
+        aria-label="Close menu">
+
+        <span class="close-line rotate-45"></span>
+        <span class="close-line -rotate-45 absolute"></span>
+      </button>
+    </div>
+
+      <nav class="flex-1 flex flex-col gap-6 p-6 text-2xl font-semibold">
+        {% for item in items %}
+          <a href="{{ item.url }}"
+             class="mobile-menu-link text-slate-900 hover:text-pink-500 transition
+             {% if item.in_active_trail %} text-pink-500 {% endif %}">
+            {{ item.title }}
+          </a>
+        {% endfor %}
+      </nav>
+
+      {# CTA BUTTON #}
+      <div class="p-6 border-t">
+        <a href="/contact"
+           class="block w-full text-center py-3 rounded-lg bg-pink-500
+                  text-white text-lg font-semibold hover:bg-pink-600 transition">
+          Contact Us
+        </a>
+      </div>
+
+    </div>
+  </aside>
 </nav>
+

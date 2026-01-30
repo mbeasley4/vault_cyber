@@ -2,3 +2,10 @@ global:
   css:
     theme:
       dist/css/app.css: {}
+mobile-menu:
+  js:
+    js/mobile-menu.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+
