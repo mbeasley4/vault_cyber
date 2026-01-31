@@ -14,8 +14,13 @@
       <div class="hidden lg:flex gap-8 items-center">
         {% for item in items %}
           <a href="{{ item.url }}"
-             class="text-slate-900 hover:text-pink-500 transition
-             {% if item.in_active_trail %} text-pink-500 {% endif %}">
+            class="relative text-slate-900 transition
+                    hover:text-pink-500
+                    {% if item.in_active_trail %}
+                      text-pink-500
+                      after:absolute after:-bottom-1 after:left-0
+                      after:h-[2px] after:w-full after:bg-pink-500
+                    {% endif %}">
             {{ item.title }}
           </a>
         {% endfor %}

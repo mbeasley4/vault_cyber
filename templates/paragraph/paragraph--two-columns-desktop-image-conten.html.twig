@@ -14,6 +14,12 @@
 {% elseif layout == '1_4_3_4' %}
   {% set image_cols = 'md:col-span-3' %}
   {% set text_cols  = 'md:col-span-9' %}
+{% elseif layout == '2_3_1_3' %}
+  {% set image_cols = 'md:col-span-8' %}
+  {% set text_cols  = 'md:col-span-4' %}
+{% elseif layout == '3_4_1_4' %}
+  {% set image_cols = 'md:col-span-9' %}
+  {% set text_cols  = 'md:col-span-3' %}
 {% else %}
   {% set image_cols = 'md:col-span-6' %}
   {% set text_cols  = 'md:col-span-6' %}
@@ -37,14 +43,21 @@
 
     <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
 
-      {# IMAGE COLUMN #}
-      <div class="{{ image_cols }} {{ image_order }} flex justify-center">
+     {# IMAGE COLUMN #}
+      <div class="{{ image_cols }} {{ image_order }}">
 
         {% if content.field_image %}
-          <div class="w-full max-w-sm sm:max-w-md lg:max-w-full">
-            {{ content.field_image|add_class(
-              'w-full h-auto overflow-hidden rounded-2xl object-contain shadow-lg'
-            ) }}
+          <div class="relative w-full
+                      h-[240px] sm:h-[320px] md:h-[360px] lg:h-[420px]
+                      overflow-hidden rounded-2xl shadow-lg
+                      [&_img]:absolute
+                      [&_img]:w-full
+                      [&_img]:h-full
+                      [&_img]:object-cover
+                      [&_img]:object-center">
+
+            {{ content.field_image }}
+
           </div>
         {% endif %}
 

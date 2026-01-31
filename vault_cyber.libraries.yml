@@ -2,6 +2,11 @@ global:
   css:
     theme:
       dist/css/app.css: {}
+hero-image:
+  js:
+    js/hero-image-blur.js: {}
+  dependencies:
+    - core/drupal
 mobile-menu:
   js:
     js/mobile-menu.js: {}

@@ -1,39 +1,50 @@
 {# paragraph--cta-section.html.twig #}
+{% set background_color = paragraph.field_background_color.value %}
 
-<section class="relative w-full bg-[#0b2a3c] py-28 px-6 overflow-hidden crt-scanlines">
+<section class="relative w-full overflow-hidden
+                cta-style-{{ background_color }}
+                py-28 px-6">
+
   <div class="relative z-10 max-w-5xl mx-auto text-center">
 
+    {# HEADLINE #}
     {% if content.field_headline %}
-      <h2 class="font-orbitron uppercase text-4xl sm:text-5xl font-bold text-white mb-6">
+      <h2 class="font-orbitron uppercase
+                 text-4xl sm:text-5xl
+                 font-bold mb-6">
         {{ content.field_headline }}
       </h2>
     {% endif %}
 
+    {# BODY CONTENT #}
     {% if content.field_block_content %}
-      <div class="text-white/90 text-lg leading-relaxed max-w-3xl mx-auto mb-10">
+      <div class="text-lg leading-relaxed
+                  max-w-3xl mx-auto mb-10">
         {{ content.field_block_content }}
       </div>
     {% endif %}
 
+    {# CTA BUTTONS #}
     {% if content.field_cta_primary or content.field_cta_secondary %}
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <div class="flex flex-col sm:flex-row
+                  gap-4 justify-center">
 
         {% if content.field_cta_primary %}
           {{ content.field_cta_primary|add_class(
-            'uppercase px-8 py-4 rounded-lg
-             bg-yellow-400 text-slate-900
+            'cta-primary uppercase
+             px-8 py-4 rounded-lg
              font-semibold tracking-wide
-             hover:bg-yellow-300 transition'
+             transition'
           ) }}
         {% endif %}
 
         {% if content.field_cta_secondary %}
           {{ content.field_cta_secondary|add_class(
-            'uppercase px-8 py-4 rounded-lg
-             border-2 border-yellow-400
-             text-yellow-400
-             hover:bg-yellow-400 hover:text-slate-900
-             font-semibold tracking-wide transition'
+            'cta-secondary uppercase
+             px-8 py-4 rounded-lg
+             border-2
+             font-semibold tracking-wide
+             transition'
           ) }}
         {% endif %}
 
@@ -41,4 +52,5 @@
     {% endif %}
 
   </div>
+
 </section>
