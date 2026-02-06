@@ -24,8 +24,19 @@
       </p>
     {% endif %}
 
+    {% if paragraph.field_content.value %}
+      <p class="pricing-section__intro
+                mt-4 sm:mt-6
+                max-w-3xl mx-auto
+                text-base sm:text-md
+                text-white/90
+                text-center leading-relaxed">
+        {{ paragraph.field_content.value }}
+      </p>
+    {% endif %}
+
     <div class="pricing-section__grid mt-12 sm:mt-16 grid gap-6 sm:gap-8 lg:gap-10 md:grid-cols-2 lg:grid-cols-4">
-      {% for item in paragraph.field_pricing_cards %}
+      {% for item in paragraph.field_industry_cards %}
         {{ drupal_entity('paragraph', item.target_id) }}
       {% endfor %}
     </div>
