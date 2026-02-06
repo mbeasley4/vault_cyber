@@ -14,7 +14,7 @@
       <div class="hidden lg:flex gap-8 items-center">
         {% for item in items %}
           <a href="{{ item.url }}"
-            class="relative text-slate-900 transition
+            class="font-orbitron uppercase text-sm lg:text-lg relative text-slate-900 transition
                     hover:text-pink-500
                     {% if item.in_active_trail %}
                       text-pink-500
@@ -73,7 +73,7 @@
       <nav class="flex-1 flex flex-col gap-6 p-6 text-2xl font-semibold">
         {% for item in items %}
           <a href="{{ item.url }}"
-             class="mobile-menu-link text-slate-900 hover:text-pink-500 transition
+             class="font-orbitron uppercasemobile-menu-link text-slate-900 hover:text-pink-500 transition
              {% if item.in_active_trail %} text-pink-500 {% endif %}">
             {{ item.title }}
           </a>

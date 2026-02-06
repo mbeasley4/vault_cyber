@@ -2704,6 +2704,11 @@ button,
     font-size: 3.75rem;
     line-height: 1;
   }
+
+  .lg\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
 }
 
 .\[\&_\.lazy-image\.is-loaded_img\]\:scale-100 .lazy-image.is-loaded img {
