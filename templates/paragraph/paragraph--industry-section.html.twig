@@ -2,11 +2,11 @@
   set bg = paragraph.field_background.value ?: 'vault'
 %}
 
-<section class="pricing-section pricing-section--{{ bg }} bg-pink-500">
+<section class="industry-section industry-section--{{ bg }} bg-pink-500">
   <div class="max-w-7xl mx-auto px-5 sm:px-6 py-16 sm:py-20">
 
     {% if paragraph.field_headline.value %}
-      <h2 class="pricing-section__title
+      <h2 class="industry-section__title
                  text-3xl sm:text-4xl font-bold tracking-tight
                  text-center text-white">
         {{ paragraph.field_headline.value }}
@@ -14,7 +14,7 @@
     {% endif %}
 
     {% if paragraph.field_subhead.value %}
-      <p class="pricing-section__intro
+      <p class="industry-section__intro
                 mt-4 sm:mt-6
                 max-w-3xl mx-auto
                 text-base sm:text-lg
@@ -25,7 +25,7 @@
     {% endif %}
 
     {% if paragraph.field_content.value %}
-      <p class="pricing-section__intro
+      <p class="industry-section__intro
                 mt-4 sm:mt-6
                 max-w-3xl mx-auto
                 text-base sm:text-md
@@ -35,7 +35,7 @@
       </p>
     {% endif %}
 
-    <div class="pricing-section__grid mt-12 sm:mt-16 grid gap-6 sm:gap-8 lg:gap-10 md:grid-cols-2 lg:grid-cols-4">
+    <div class="industry-section__grid mt-12 sm:mt-16 grid gap-6 sm:gap-8 lg:gap-10 md:grid-cols-2 lg:grid-cols-4">
       {% for item in paragraph.field_industry_cards %}
         {{ drupal_entity('paragraph', item.target_id) }}
       {% endfor %}
