@@ -5,7 +5,8 @@ module.exports = {
     './src/**/*.js',
     './src/**/*.css',
     "./**/*.yml",
-    "../../modules/custom/**/*.twig"
+    '../../../modules/custom/**/*.twig',
+    '../../../modules/custom/**/**/*.twig',
   ],
   darkMode: 'class',
   theme: {

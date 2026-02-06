@@ -1,0 +1,57 @@
+{%
+  set variant = paragraph.field_variant.value ?: 'basic'
+%}
+
+<div class="industry-card industry-card--{{ variant }}
+            relative
+            bg-white
+            rounded-2xl
+            p-6 sm:p-8
+            shadow-xl shadow-black/20
+            border border-white/30
+            transition-all duration-300 ease-out
+            hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/30">
+
+  {# Optional badge #}
+  {% if paragraph.field_badge.value %}
+    <div class="absolute -top-3 right-4
+                rounded-full bg-pink-600
+                px-3 py-1 text-xs font-semibold text-white shadow-lg">
+      {{ paragraph.field_badge.value }}
+    </div>
+  {% endif %}
+
+  {# Icon image (replaces price) #}
+  {% if paragraph.field_icon.entity %}
+    {% set icon = paragraph.field_icon.entity %}
+    <div class="mb-5 flex justify-center">
+      <img
+        src="{{ file_url(icon.uri.value) }}"
+        alt="{{ paragraph.field_title.value|striptags }}"
+        class="h-14 w-14 object-contain"
+        loading="lazy"
+      />
+    </div>
+  {% endif %}
+
+  <h3 class="industry-card__title text-xl font-bold text-gray-900 text-center">
+    {{ paragraph.field_title.value }}
+  </h3>
+
+  <div class="industry-card__features mt-4 text-sm text-gray-700 text-center leading-relaxed">
+    {{ paragraph.field_features.value|raw }}
+  </div>
+
+  <div class="industry-card__cta mt-6 text-center">
+    <a href="/contact"
+       class="inline-flex items-center justify-center
+              rounded-lg bg-pink-500 px-5 py-2.5
+              text-white font-semibold
+              shadow-md
+              hover:bg-pink-600 hover:shadow-lg
+              transition">
+      Enlist Now →
+    </a>
+  </div>
+
+</div>
