@@ -1,0 +1,41 @@
+<section class="node-section">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 py-16 sm:py-20">
+    <article class="incident-detail vault-card">
+      <div class="vault-screen">
+        <header class="mb-6">
+          <h1 class="text-2xl font-bold tracking-wider">
+            {{ node.field_incident_id.value }}
+          </h1>
+
+          <div class="flex gap-4 text-sm mt-2">
+            {% set severity = node.field_severity.entity.name.value|lower %}
+            {% set status = node.field_status.entity.name.value|lower %}
+
+            <span class="badge badge-{{ severity }}">
+              {{ node.field_severity.entity.name.value }}  
+            </span>
+
+            <span class="badge status-{{ status }}">
+               {{ node.field_status.entity.name.value }}  
+            </span>
+          </div>
+        </header>
+
+        <section class="grid grid-cols-2 gap-4 text-sm">
+          <div>
+            <strong>System:</strong> {{ node.field_system_affected.value }}
+          </div>
+          <div>
+            <strong>Analyst:</strong> {{ node.field_analyst_assigned.entity.name.value }}
+          </div>
+          <div>
+            <strong>Opened:</strong> {{ node.field_incident_opened.value }}
+          </div>
+          <div>
+            <strong>Closed:</strong> {{ node.field_incident_closed.value }}
+          </div>
+        </section>
+      </div>
+    </article>
+  </div>
+</section>

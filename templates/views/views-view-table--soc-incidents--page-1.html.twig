@@ -1,0 +1,30 @@
+<section class="node-section">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 py-16 sm:py-20">
+    <table class="soc-incidents-table w-full">
+      <thead>
+        <tr>
+          {% for field in header %}
+            <th class="px-3 py-2 text-left text-sm font-semibold uppercase tracking-wide">
+              {{ field.content ?? field }}
+            </th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in rows %}
+          <tr class="hover:bg-slate-50 cursor-pointer">
+            {% for key, column in row.columns %}
+              <td class="px-3 py-2 border-b">
+                {% if column.content is defined and column.content[0] is defined and column.content[0].field_output is defined %}
+                  {{ column.content[0].field_output['#markup']|raw }}
+                {% else %}
+                  —
+                {% endif %}
+              </td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>

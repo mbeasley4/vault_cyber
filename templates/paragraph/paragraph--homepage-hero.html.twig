@@ -10,27 +10,28 @@
               bg-[length:100%_4px]"></div>
 
   <div class="flex items-center">
-    <div class="container mx-auto px-6 py-12 sm:py-16 lg:py-20">
+    <div class="container mx-auto px-4 sm:px-6 py-8 sm:py-16 lg:py-20">
 
-      <div class="flex flex-col-reverse lg:flex-row items-center gap-12">
+      <div class="flex flex-col-reverse lg:flex-row items-center gap-6 sm:gap-8 lg:gap-12">
 
         {# TEXT COLUMN #}
         <div class="w-full lg:w-3/5 flex flex-col relative z-10
                     text-center lg:text-left">
 
-          <span class="inline-block mb-4 px-3 py-1 text-xs tracking-widest
+          <span class="inline-block self-center lg:self-start mb-3 sm:mb-4 px-3 py-1
+                       text-[10px] sm:text-xs tracking-widest
                        bg-black border border-vault-green text-vault-green
                        shadow-[0_0_8px_rgba(57,255,20,0.7)]">
             SYSTEM STATUS: ONLINE
           </span>
 
-          <span class="w-24 h-1 mb-6 mx-auto lg:mx-0
+          <span class="w-16 sm:w-24 h-1 mb-4 sm:mb-6 mx-auto lg:mx-0
                        bg-vault-green shadow-[0_0_12px_#39ff14] block"></span>
 
           {% if content.field_headline %}
             <h1 class="font-orbitron uppercase
-                       text-4xl sm:text-5xl lg:text-7xl
-                       font-black leading-none tracking-wider
+                       text-3xl sm:text-5xl lg:text-7xl
+                       font-black leading-tight sm:leading-none tracking-wide sm:tracking-wider
                        text-vault-light
                        drop-shadow-[0_0_12px_rgba(57,255,20,0.6)]">
               {{ content.field_headline }}
@@ -38,7 +39,7 @@
           {% endif %}
 
           {% if content.field_subhead %}
-            <h2 class="font-orbitron mt-6 text-lg sm:text-xl lg:text-2xl
+            <h2 class="font-orbitron mt-4 sm:mt-6 text-base sm:text-xl lg:text-2xl
                        text-vault-lightMuted max-w-xl mx-auto lg:mx-0
                        drop-shadow-[0_0_6px_rgba(57,255,20,0.35)]">
               {{ content.field_subhead }}
@@ -46,13 +47,14 @@
           {% endif %}
 
           {% if content.field_cta_primary or content.field_cta_secondary %}
-            <div class="flex flex-wrap justify-center lg:justify-start
-                        gap-4 mt-8">
+            <div class="flex flex-col sm:flex-row flex-wrap justify-center lg:justify-start
+                        gap-3 sm:gap-4 mt-6 sm:mt-8">
 
               {% if content.field_cta_primary %}
                 {{ content.field_cta_primary|add_class(
-                  'vault-button-primary uppercase px-7 py-3 rounded-lg
+                  'vault-button-primary uppercase px-5 sm:px-7 py-3 rounded-lg
                    bg-vault-yellow text-black font-extrabold tracking-wide
+                   text-sm sm:text-base text-center
                    border-2 border-black
                    shadow-[0_0_0_2px_#000,0_0_15px_rgba(250,204,21,0.8)]
                    hover:shadow-[0_0_20px_rgba(250,204,21,1)]
@@ -62,8 +64,9 @@
 
               {% if content.field_cta_secondary %}
                 {{ content.field_cta_secondary|add_class(
-                  'vault-button-secondary uppercase px-7 py-3 rounded-lg
+                  'vault-button-secondary uppercase px-5 sm:px-7 py-3 rounded-lg
                    border-2 border-vault-green text-vault-green
+                   text-sm sm:text-base text-center
                    hover:bg-vault-green hover:text-black
                    shadow-[0_0_10px_rgba(57,255,20,0.6)]
                    transition'
@@ -86,7 +89,7 @@
 
               {{ content.field_image|add_class(
                 'relative w-full max-w-xs sm:max-w-sm lg:max-w-md
-                 max-h-[60vh] lg:max-h-[70vh]
+                 max-h-[40vh] sm:max-h-[60vh] lg:max-h-[70vh]
                  object-contain
                  drop-shadow-[0_0_30px_rgba(57,255,20,0.6)]'
               ) }}

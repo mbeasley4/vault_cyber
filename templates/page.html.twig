@@ -7,6 +7,13 @@
       </div>
     </header>
   {% endif %}
+  {% if page.primary_menu %}
+    <header class="sticky top-0 z-50 bg-white border-b border-white/20">
+      <div class="w-full px-6 pt-4 text-black">
+        {{ page.primary_menu }}
+      </div>
+    </header>
+  {% endif %}
 
   <div class="flex-1 w-full grid gap-8 md:grid-cols-12">
       <main id="main-content" class="md:col-span-12">
